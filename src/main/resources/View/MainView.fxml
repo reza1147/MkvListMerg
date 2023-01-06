@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.pixelduke.control.Ribbon?>
+<?import com.pixelduke.control.ribbon.RibbonGroup?>
+<?import com.pixelduke.control.ribbon.RibbonTab?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
+<BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" style="-fx-background-color: white;"
+            fx:controller="View.MainView">
+    <top>
+        <Ribbon style="-fx-background-color: white;">
+            <tabs>
+                <RibbonTab text="Main">
+                    <ribbonGroups>
+                        <RibbonGroup title="Folders">
+                            <nodes>
+                                <Button onAction="#addFolder" contentDisplay="TOP" text="Add Folder">
+                                    <graphic>
+                                        <ImageView>
+                                            <Image url="@../Icons/AddFolder.png"/>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </nodes>
+                        </RibbonGroup>
+                    </ribbonGroups>
+                </RibbonTab>
+                <RibbonTab text="Help">
+                    <ribbonGroups>
+                        <RibbonGroup title="Folders">
+                            <nodes>
+                                <Button contentDisplay="TOP" text="Add Folder">
+                                    <graphic>
+                                        <ImageView>
+                                            <Image url="@../Icons/AddFolder.png"/>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </nodes>
+                        </RibbonGroup>
+                    </ribbonGroups>
+                </RibbonTab>
+            </tabs>
+        </Ribbon>
+    </top>
+    <center>
+        <HBox fx:id="centerPane"/>
+    </center>
+</BorderPane>

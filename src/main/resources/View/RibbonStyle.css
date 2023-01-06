@@ -1,0 +1,7 @@
+.ribbon > .outer-container > .tab-pane > .tab-header-area > .tab-header-background {
+    -fx-background-color: -fx-outer-border, white, white;
+}
+
+.ribbon > .outer-container > .tab-pane > .tab-header-area > .headers-region > .tab {
+    -fx-background-color: -fx-outer-border, white, white;
+}

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Path start = Paths.get("G:\\Movies\\Red 2 [2013]");
+        Path start = Paths.get("F:\\The Witcher Blood Origin");
 //        Path start = Paths.get("C:\\Users\\rezat\\Downloads\\Video");
         ReadFiles rf = new ReadFiles(start);
 //        rf.append(second);
@@ -40,15 +40,13 @@ public class Main {
                             command.add("--language");
                             command.add("0:fa");
                             command.add("--track-name");
-                            command.add("0:Filimo");
+                            command.add("0:RanginKamaanSokhan");
                             command.add("--track-name");
-                            command.add("1:Filimo");
+                            command.add("1:RanginKamaanSokhan");
                             break;
                         case 1:
                             command.add("--language");
                             command.add("0:fa");
-                            command.add("--sub-charset");
-                            command.add("0:UTF-8");
                             break;
                     }
                     command.add(file.getAbsolutePath());
