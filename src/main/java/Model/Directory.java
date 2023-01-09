@@ -26,4 +26,8 @@ public class Directory{
     public String toString() {
         return directory.getName();
     }
+
+    public String getDirectoryName(){
+        return directory.getName();
+    }
 }

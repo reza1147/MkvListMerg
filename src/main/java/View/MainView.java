@@ -1,14 +1,16 @@
 package View;
 
 import Model.Directory;
+import ViewModel.DirectoryViewModel;
 import ViewModel.MainViewModel;
+import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
+import de.saxsys.mvvmfx.ViewTuple;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.DirectoryChooser;
@@ -33,10 +35,9 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
             public void onChanged(Change<? extends Directory> c) {
                 if (c.next())
                     c.getAddedSubList().forEach(addedDirectory -> {
-                        Label lbl = new Label();
-                        lbl.setId(String.valueOf(viewModel.directoriesListProperty().indexOf(addedDirectory)));
-                        lbl.setText(String.valueOf(addedDirectory));
-                        centerPane.getChildren().add(lbl);
+                        ViewTuple<DirectoryView, DirectoryViewModel> viewTuple = FluentViewLoader.fxmlView(DirectoryView.class).load();
+                        viewTuple.getViewModel().initWithModel(addedDirectory);
+                        centerPane.getChildren().add(viewTuple.getView());
                     });
             }
         });
