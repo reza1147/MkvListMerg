@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<HBox fx:id="tilePane" maxHeight="100.0" maxWidth="400.0" minHeight="100.0" minWidth="400.0" spacing="5"
+      style="-fx-border-color: gray; -fx-padding: 0 5 0 5;" xmlns="http://javafx.com/javafx/8.0.281" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="View.SourceFileView">
+    <StackPane fx:id="iconPane" prefHeight="100.0">
+        <ImageView fx:id="videoIcon" fitHeight="${tilePane.height}" preserveRatio="true">
+            <Image url="@../Icons/Video.png"/>
+        </ImageView>
+        <ImageView fx:id="audioIcon" fitHeight="${tilePane.height}" preserveRatio="true">
+            <Image url="@../Icons/Audio.png"/>
+        </ImageView>
+        <ImageView fx:id="subtitleIcon" fitHeight="${tilePane.height}" preserveRatio="true">
+            <Image url="@../Icons/Subtitle.png"/>
+        </ImageView>
+    </StackPane>
+    <Label fx:id="fileName"/>
+</HBox>

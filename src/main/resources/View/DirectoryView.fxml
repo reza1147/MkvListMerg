@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane minWidth="400.0" prefHeight="600.0" style="-fx-border-color: gray;" xmlns="http://javafx.com/javafx/8.0.281" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DirectoryView">
+<BorderPane minWidth="400.0" maxWidth="400.0" prefHeight="600.0" style="-fx-border-color: gray;" xmlns="http://javafx.com/javafx/8.0.281" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DirectoryView">
     <top>
         <HBox alignment="CENTER" style="-fx-background-color: lightgray;">
             <Label fx:id="name" alignment="CENTER" maxWidth="Infinity" text="test" HBox.hgrow="ALWAYS">
@@ -21,6 +21,8 @@
             </Button>
         </HBox>
     </top>
-
+    <center>
+        <TilePane fx:id="filesTiles"/>
+    </center>
 
 </BorderPane>
