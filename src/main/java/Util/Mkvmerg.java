@@ -50,11 +50,15 @@ public class Mkvmerg {
         JsonObject root = JsonParser.parseString(runWithCommands(command)).getAsJsonObject();
         JsonArray tracks = root.get("tracks").getAsJsonArray();
         tracks.forEach(t -> {
+            String name = "";
+            if (t.getAsJsonObject().get("properties").getAsJsonObject().has("track_name"))
+                name = t.getAsJsonObject().get("properties").getAsJsonObject().get("track_name").getAsString();
             sourceTracks.add(
                     new SourceTrack(t.getAsJsonObject().get("id").getAsInt(),
                             SourceType.valueOf(t.getAsJsonObject().get("type").getAsString().toUpperCase()),
                             t.getAsJsonObject().get("codec").getAsString(),
-                            t.getAsJsonObject().get("properties").getAsJsonObject().get("language").getAsString()
+                            t.getAsJsonObject().get("properties").getAsJsonObject().get("language").getAsString(),
+                            name
                     ));
         });
         return sourceTracks;

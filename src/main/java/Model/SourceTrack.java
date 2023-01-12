@@ -5,12 +5,14 @@ public class SourceTrack implements Comparable {
     private SourceType trackType;
     private String codec;
     private String language;
+    private String name;
 
-    public SourceTrack(Integer ID, SourceType trackType, String codec, String language) {
+    public SourceTrack(Integer ID, SourceType trackType, String codec, String language, String name) {
         this.ID = ID;
         this.trackType = trackType;
         this.codec = codec;
         this.language = language;
+        this.name = name;
     }
 
     @Override
@@ -21,9 +23,9 @@ public class SourceTrack implements Comparable {
 
     @Override
     public String toString() {
-        return ID +
-                ":" + trackType +
-                "(" + codec + '\'' +
-                ")[" + language + ']';
+        return ID + ':' + trackType.toString() +
+                '(' + codec + ')' +
+                '[' + language + ']' +
+                '{' + name + '}';
     }
 }
