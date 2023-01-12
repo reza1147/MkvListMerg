@@ -12,17 +12,20 @@ public class SourceFileViewModel implements ViewModel {
 
     private SourceFile sourceFileModel;
     private StringProperty sourceFileName;
+    private StringProperty informations;
     private ObjectProperty<SourceType> sourceFileType;
 
     public SourceFileViewModel() {
         sourceFileName = new SimpleStringProperty("");
         sourceFileType = new SimpleObjectProperty<>();
+        informations = new SimpleStringProperty();
     }
 
     public void initWithModel(SourceFile sourceFileModel) {
         this.sourceFileModel = sourceFileModel;
         sourceFileName.setValue(sourceFileModel.getSourceFileName());
         sourceFileType.setValue(sourceFileModel.getType());
+        informations.setValue(sourceFileModel.information());
     }
 
     public SourceType getSourceFileType() {
@@ -39,5 +42,13 @@ public class SourceFileViewModel implements ViewModel {
 
     public StringProperty sourceFileNameProperty() {
         return sourceFileName;
+    }
+
+    public String getInformations() {
+        return informations.get();
+    }
+
+    public StringProperty informationsProperty() {
+        return informations;
     }
 }

@@ -1,6 +1,7 @@
 package Model;
 
 import Util.Mkvinfo;
+import Util.Mkvmerg;
 
 import java.io.File;
 import java.net.URI;
@@ -22,10 +23,10 @@ public class Directory {
         Arrays.stream(directory.listFiles()).forEach(f -> {
             try {
                 files.add(new SourceFile(f));
-                Mkvinfo.readInfo(f);
             } catch (IllegalArgumentException e) {
             }
         });
+        System.out.println(files);
     }
 
     public Directory(String pathname) throws IllegalArgumentException {

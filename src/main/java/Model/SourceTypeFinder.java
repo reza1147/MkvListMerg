@@ -17,7 +17,7 @@ public final class SourceTypeFinder {
         if (AUDIO_EXTINSION.contains(extension))
             return SourceType.AUDIO;
         if (SUBTILE_EXTINSION.contains(extension))
-            return SourceType.SUBTITLE;
+            return SourceType.SUBTITLES;
         throw new IllegalArgumentException("Can't recognize ." + extension + " file type!!");
     }
 }

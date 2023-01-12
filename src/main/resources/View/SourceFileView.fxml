@@ -4,6 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Button?>
 <HBox fx:id="tilePane" maxHeight="100.0" maxWidth="400.0" minHeight="100.0" minWidth="400.0" spacing="5"
       style="-fx-border-color: gray; -fx-padding: 0 5 0 5;" xmlns="http://javafx.com/javafx/8.0.281" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="View.SourceFileView">
@@ -19,4 +20,5 @@
         </ImageView>
     </StackPane>
     <Label fx:id="fileName"/>
+    <Button onAction="#showInfo" text="info"/>
 </HBox>
