@@ -21,9 +21,29 @@ public class SourceTrack implements Comparable {
         return this.ID - oo.ID;
     }
 
+    public Integer getID() {
+        return ID;
+    }
+
+    public SourceType getTrackType() {
+        return trackType;
+    }
+
+    public String getCodec() {
+        return codec;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
-        return ID + ':' + trackType.toString() +
+        return ID + ":" + trackType +
                 '(' + codec + ')' +
                 '[' + language + ']' +
                 '{' + name + '}';

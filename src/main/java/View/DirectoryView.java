@@ -1,6 +1,5 @@
 package View;
 
-import Model.Directory;
 import Model.SourceFile;
 import ViewModel.DirectoryViewModel;
 import ViewModel.SourceFileViewModel;
@@ -12,6 +11,7 @@ import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.TilePane;
 
 import java.net.URL;
@@ -19,18 +19,21 @@ import java.util.ResourceBundle;
 
 public class DirectoryView implements FxmlView<DirectoryViewModel>, Initializable {
     @FXML
+    private Tooltip nameTooltip;
+    @FXML
     private TilePane filesTiles;
     @FXML
     private Label name;
 
 
     @InjectViewModel
-    DirectoryViewModel directoryViewModel;
+    DirectoryViewModel viewModel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        name.textProperty().bind(directoryViewModel.directoryNameProperty());
-        directoryViewModel.sourceFileViewModelsProperty().addListener(new ListChangeListener<SourceFile>() {
+        name.textProperty().bind(viewModel.directoryNameProperty());
+        nameTooltip.textProperty().bind(viewModel.directoryNameProperty());
+        viewModel.sourceFileViewModelsProperty().addListener(new ListChangeListener<SourceFile>() {
             @Override
             public void onChanged(Change<? extends SourceFile> c) {
                 if (c.next())

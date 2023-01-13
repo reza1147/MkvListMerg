@@ -46,6 +46,14 @@ public class SourceFile {
         return type;
     }
 
+    public File getSource() {
+        return source;
+    }
+
+    public Set<SourceTrack> getTracks() {
+        return tracks;
+    }
+
     public String information() {
         return Mkvinfo.readInfo(source);
     }

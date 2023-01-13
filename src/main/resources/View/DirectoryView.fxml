@@ -9,6 +9,7 @@
     <top>
         <HBox alignment="CENTER" style="-fx-background-color: lightgray;">
             <Label fx:id="name" alignment="CENTER" maxWidth="Infinity" text="test" HBox.hgrow="ALWAYS">
+                <tooltip><Tooltip fx:id="nameTooltip"/></tooltip>
             <font>
                <Font size="20.0" />
             </font></Label>

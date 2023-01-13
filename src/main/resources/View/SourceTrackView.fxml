@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.StackPane?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="View.SourceTrackView"
+           fx:id="iconPane"
+           prefHeight="25.0" prefWidth="25.0"
+           minHeight="25.0" minWidth="25.0"
+           maxHeight="25.0" maxWidth="25.0">
+    <ImageView fx:id="videoIcon" preserveRatio="true" fitHeight="${iconPane.height}">
+        <Image url="@../Icons/Video.png"/>
+    </ImageView>
+    <ImageView fx:id="audioIcon" preserveRatio="true" fitHeight="${iconPane.height}">
+        <Image url="@../Icons/Audio.png"/>
+    </ImageView>
+    <ImageView fx:id="subtitleIcon" preserveRatio="true" fitHeight="${iconPane.height}">
+        <Image url="@../Icons/Subtitle.png"/>
+    </ImageView>
+</StackPane>

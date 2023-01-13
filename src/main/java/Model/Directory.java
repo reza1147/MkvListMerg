@@ -26,7 +26,6 @@ public class Directory {
             } catch (IllegalArgumentException e) {
             }
         });
-        System.out.println(files);
     }
 
     public Directory(String pathname) throws IllegalArgumentException {

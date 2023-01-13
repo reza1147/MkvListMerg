@@ -1,24 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.control.Button?>
-<HBox fx:id="tilePane" maxHeight="100.0" maxWidth="400.0" minHeight="100.0" minWidth="400.0" spacing="5"
-      style="-fx-border-color: gray; -fx-padding: 0 5 0 5;" xmlns="http://javafx.com/javafx/8.0.281" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="View.SourceFileView">
-    <StackPane fx:id="iconPane" prefHeight="100.0">
-        <ImageView fx:id="videoIcon" fitHeight="${tilePane.height}" preserveRatio="true">
-            <Image url="@../Icons/Video.png"/>
-        </ImageView>
-        <ImageView fx:id="audioIcon" fitHeight="${tilePane.height}" preserveRatio="true">
-            <Image url="@../Icons/Audio.png"/>
-        </ImageView>
-        <ImageView fx:id="subtitleIcon" fitHeight="${tilePane.height}" preserveRatio="true">
-            <Image url="@../Icons/Subtitle.png"/>
-        </ImageView>
-    </StackPane>
-    <Label fx:id="fileName"/>
-    <Button onAction="#showInfo" text="info"/>
-</HBox>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<BorderPane maxHeight="60.0" maxWidth="400.0" xmlns:fx="http://javafx.com/fxml/1"
+            minHeight="60.0" minWidth="400.0" xmlns="http://javafx.com/javafx/8.0.281"
+            prefHeight="60.0" prefWidth="400.0" style="-fx-border-color: gray; -fx-padding: 2; "
+            fx:id="tilePane" fx:controller="View.SourceFileView">
+    <left>
+        <Button onAction="#showInfo" BorderPane.alignment="CENTER" style="-fx-background-color: white;"
+                prefHeight="50" maxHeight="50" minHeight="50"
+                prefWidth="50" maxWidth="50" minWidth="50">
+            <graphic>
+                <StackPane prefHeight="49" maxHeight="49" minHeight="49"
+                           prefWidth="49" maxWidth="49" minWidth="49"
+                           fx:id="iconPane">
+                    <ImageView fx:id="videoIcon" preserveRatio="true" fitHeight="${iconPane.height}">
+                        <Image url="@../Icons/Video.png"/>
+                    </ImageView>
+                    <ImageView fx:id="audioIcon" preserveRatio="true" fitHeight="${iconPane.height}">
+                        <Image url="@../Icons/Audio.png"/>
+                    </ImageView>
+                    <ImageView fx:id="subtitleIcon" preserveRatio="true" fitHeight="${iconPane.height}">
+                        <Image url="@../Icons/Subtitle.png"/>
+                    </ImageView>
+                </StackPane>
+            </graphic>
+        </Button>
+
+    </left>
+    <center>
+        <VBox spacing="5">
+            <BorderPane.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </BorderPane.margin>
+            <Label fx:id="fileName" maxWidth="Infinity" BorderPane.alignment="TOP_CENTER">
+                <tooltip>
+                    <Tooltip fx:id="fileNameTooltip"/>
+                </tooltip>
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Label>
+            <HBox fx:id="tracks" spacing="5"/>
+        </VBox>
+
+    </center>
+    <right>
+        <VBox BorderPane.alignment="CENTER">
+            <Button style="-fx-background-color: white;"
+                    prefHeight="29" maxHeight="29" minHeight="29"
+                    prefWidth="29" maxWidth="29" minWidth="29">
+                <graphic>
+                    <ImageView preserveRatio="true" rotate="180.0">
+                        <Image url="@../Icons/Arrow.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button style="-fx-background-color: white;"
+                    prefHeight="29" maxHeight="29" minHeight="29"
+                    prefWidth="29" maxWidth="29" minWidth="29">
+                <graphic>
+                    <ImageView preserveRatio="true">
+                        <Image url="@../Icons/Arrow.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </VBox>
+    </right>
+</BorderPane>

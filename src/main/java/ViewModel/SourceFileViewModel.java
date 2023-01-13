@@ -1,12 +1,12 @@
 package ViewModel;
 
 import Model.SourceFile;
+import Model.SourceTrack;
 import Model.SourceType;
 import de.saxsys.mvvmfx.ViewModel;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class SourceFileViewModel implements ViewModel {
 
@@ -14,11 +14,13 @@ public class SourceFileViewModel implements ViewModel {
     private StringProperty sourceFileName;
     private StringProperty informations;
     private ObjectProperty<SourceType> sourceFileType;
+    private ListProperty<SourceTrack> tracks;
 
     public SourceFileViewModel() {
         sourceFileName = new SimpleStringProperty("");
         sourceFileType = new SimpleObjectProperty<>();
         informations = new SimpleStringProperty();
+        tracks = new SimpleListProperty<>(FXCollections.observableArrayList());
     }
 
     public void initWithModel(SourceFile sourceFileModel) {
@@ -26,6 +28,7 @@ public class SourceFileViewModel implements ViewModel {
         sourceFileName.setValue(sourceFileModel.getSourceFileName());
         sourceFileType.setValue(sourceFileModel.getType());
         informations.setValue(sourceFileModel.information());
+        tracks.addAll(sourceFileModel.getTracks());
     }
 
     public SourceType getSourceFileType() {
@@ -50,5 +53,13 @@ public class SourceFileViewModel implements ViewModel {
 
     public StringProperty informationsProperty() {
         return informations;
+    }
+
+    public ObservableList<SourceTrack> getTracks() {
+        return tracks.get();
+    }
+
+    public ListProperty<SourceTrack> tracksProperty() {
+        return tracks;
     }
 }

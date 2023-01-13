@@ -21,13 +21,13 @@ public class DirectoryViewModel implements ViewModel {
 
     public DirectoryViewModel() {
         directoryName = new SimpleStringProperty("");
-        sourceFileViewModels = new SimpleListProperty<SourceFile>(FXCollections.observableList(new ArrayList<SourceFile>()));
+        sourceFileViewModels = new SimpleListProperty<SourceFile>(FXCollections.observableArrayList());
     }
 
     public void initWithModel(Directory directoryModel) {
         this.directoryModel = directoryModel;
         directoryName.setValue(directoryModel.getDirectoryName());
-        sourceFileViewModels.setValue(FXCollections.observableList(directoryModel.getFiles()));
+        sourceFileViewModels.addAll(directoryModel.getFiles());
     }
 
     public String getDirectoryName() {

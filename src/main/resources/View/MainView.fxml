@@ -3,11 +3,13 @@
 <?import com.pixelduke.control.ribbon.RibbonGroup?>
 <?import com.pixelduke.control.ribbon.RibbonTab?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+<BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity"
             minWidth="-Infinity" style="-fx-background-color: white;"
             fx:controller="View.MainView">
     <top>
@@ -47,6 +49,8 @@
         </Ribbon>
     </top>
     <center>
-        <HBox fx:id="centerPane"/>
+        <ScrollPane hbarPolicy="ALWAYS" vbarPolicy="ALWAYS">
+            <HBox fx:id="centerPane" prefHeight="-Infinity"/>
+        </ScrollPane>
     </center>
 </BorderPane>
