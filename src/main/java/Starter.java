@@ -3,15 +3,12 @@ import ViewModel.MainViewModel;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewTuple;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import jfxtras.styles.jmetro.JMetro;
 import jfxtras.styles.jmetro.Style;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class Starter extends Application {
     public static void main(String...args){

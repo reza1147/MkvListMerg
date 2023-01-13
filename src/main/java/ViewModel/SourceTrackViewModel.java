@@ -1,11 +1,9 @@
 package ViewModel;
 
-import Model.SourceFile;
 import Model.SourceTrack;
 import Model.SourceType;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.*;
-import javafx.collections.FXCollections;
 
 public class SourceTrackViewModel implements ViewModel {
     private SourceTrack model;
