@@ -4,7 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
 <BorderPane maxHeight="60.0" maxWidth="400.0" xmlns:fx="http://javafx.com/fxml/1"
             minHeight="60.0" minWidth="400.0" xmlns="http://javafx.com/javafx/8.0.281"
             prefHeight="60.0" prefWidth="400.0" style="-fx-border-color: gray; -fx-padding: 2; "
@@ -46,8 +45,9 @@
 
     </center>
     <right>
-        <VBox BorderPane.alignment="CENTER">
-            <Button style="-fx-background-color: white;"
+        <GridPane BorderPane.alignment="CENTER">
+            <Button GridPane.columnIndex="1" GridPane.rowIndex="0"
+                    style="-fx-background-color: white;"
                     prefHeight="29" maxHeight="29" minHeight="29"
                     prefWidth="29" maxWidth="29" minWidth="29">
                 <graphic>
@@ -55,8 +55,12 @@
                         <Image url="@../Icons/Arrow.png"/>
                     </ImageView>
                 </graphic>
+                <tooltip>
+                    <Tooltip text="Move upper"/>
+                </tooltip>
             </Button>
-            <Button style="-fx-background-color: white;"
+            <Button GridPane.columnIndex="1" GridPane.rowIndex="1"
+                    style="-fx-background-color: white;"
                     prefHeight="29" maxHeight="29" minHeight="29"
                     prefWidth="29" maxWidth="29" minWidth="29">
                 <graphic>
@@ -64,7 +68,36 @@
                         <Image url="@../Icons/Arrow.png"/>
                     </ImageView>
                 </graphic>
+                <tooltip>
+                    <Tooltip text="Move lower"/>
+                </tooltip>
             </Button>
-        </VBox>
+            <Button GridPane.columnIndex="0" GridPane.rowIndex="0"
+                    style="-fx-background-color: white;"
+                    prefHeight="29" maxHeight="29" minHeight="29"
+                    prefWidth="29" maxWidth="29" minWidth="29">
+                <graphic>
+                    <ImageView preserveRatio="true">
+                        <Image url="@../Icons/Close.png"/>
+                    </ImageView>
+                </graphic>
+                <tooltip>
+                    <Tooltip text="Remove file from list"/>
+                </tooltip>
+            </Button>
+            <Button GridPane.columnIndex="0" GridPane.rowIndex="1"
+                    style="-fx-background-color: white;"
+                    prefHeight="29" maxHeight="29" minHeight="29"
+                    prefWidth="29" maxWidth="29" minWidth="29">
+                <graphic>
+                    <ImageView preserveRatio="true" rotate="45.0">
+                        <Image url="@../Icons/Close.png"/>
+                    </ImageView>
+                </graphic>
+                <tooltip>
+                    <Tooltip text="Add Empty file on list"/>
+                </tooltip>
+            </Button>
+        </GridPane>
     </right>
 </BorderPane>
