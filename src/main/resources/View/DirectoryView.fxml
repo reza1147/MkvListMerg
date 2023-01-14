@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<BorderPane minWidth="400.0" maxWidth="400.0" prefHeight="600.0" style="-fx-border-color: gray;" xmlns="http://javafx.com/javafx/8.0.281" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DirectoryView">
+<?import javafx.scene.text.Font?>
+<BorderPane prefHeight="600.0" style="-fx-border-color: gray;"
+            fx:id="directoryPane"
+            xmlns="http://javafx.com/javafx/8.0.281" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="View.DirectoryView">
     <top>
         <HBox alignment="CENTER" style="-fx-background-color: lightgray;">
-            <Label fx:id="name" alignment="CENTER" maxWidth="Infinity" text="test" HBox.hgrow="ALWAYS">
-                <tooltip><Tooltip fx:id="nameTooltip"/></tooltip>
-            <font>
-               <Font size="20.0" />
-            </font></Label>
+            <Label fx:id="name" alignment="CENTER" maxWidth="Infinity" text="test" HBox.hgrow="ALWAYS" style="-fx-font-size: 20;">
+                <tooltip>
+                    <Tooltip fx:id="nameTooltip"/>
+                </tooltip>
+            </Label>
             <Button>
                 <graphic>
                     <ImageView>
-                        <Image url="@../Icons/CloseFolder.png" />
+                        <Image url="@../Icons/Close.png"/>
                     </ImageView>
                 </graphic>
             </Button>
         </HBox>
     </top>
     <center>
-        <TilePane fx:id="filesTiles"/>
+        <HBox>
+            <TilePane maxWidth="400.0" fx:id="videoTiles"/>
+            <TilePane maxWidth="400.0" fx:id="audioTiles"/>
+            <TilePane maxWidth="400.0" fx:id="subtitleTiles"/>
+        </HBox>
     </center>
 
 </BorderPane>

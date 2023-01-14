@@ -13,7 +13,7 @@
             minWidth="-Infinity" style="-fx-background-color: white;"
             fx:controller="View.MainView">
     <top>
-        <Ribbon style="-fx-background-color: white;">
+        <Ribbon style="-fx-background-color: white;" minWidth="-Infinity">
             <tabs>
                 <RibbonTab text="Main">
                     <ribbonGroups>
@@ -49,8 +49,12 @@
         </Ribbon>
     </top>
     <center>
-        <ScrollPane hbarPolicy="ALWAYS" vbarPolicy="ALWAYS">
-            <HBox fx:id="centerPane" prefHeight="-Infinity"/>
+        <ScrollPane hbarPolicy="ALWAYS" vbarPolicy="ALWAYS" fitToWidth="true" fitToHeight="true">
+            <BorderPane prefHeight="-Infinity" prefWidth="-Infinity">
+                <center>
+                    <HBox fx:id="centerPane" />
+                </center>
+            </BorderPane>
         </ScrollPane>
     </center>
 </BorderPane>

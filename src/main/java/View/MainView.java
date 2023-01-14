@@ -1,12 +1,16 @@
 package View;
 
 import Model.Directory;
+import Model.SourceFile;
 import ViewModel.DirectoryViewModel;
 import ViewModel.MainViewModel;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.ViewTuple;
+import javafx.application.Platform;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +22,7 @@ import javafx.stage.DirectoryChooser;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class MainView implements FxmlView<MainViewModel>, Initializable {
     @FXML
@@ -28,6 +33,7 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
     @InjectViewModel
     private MainViewModel viewModel;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         viewModel.directoriesListProperty().addListener(new ListChangeListener<Directory>() {
@@ -35,9 +41,9 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
             public void onChanged(Change<? extends Directory> c) {
                 if (c.next())
                     c.getAddedSubList().forEach(addedDirectory -> {
-                        ViewTuple<DirectoryView, DirectoryViewModel> viewTuple = FluentViewLoader.fxmlView(DirectoryView.class).load();
-                        viewTuple.getViewModel().initWithModel(addedDirectory);
-                        centerPane.getChildren().add(viewTuple.getView());
+                            ViewTuple<DirectoryView, DirectoryViewModel> viewTuple = FluentViewLoader.fxmlView(DirectoryView.class).load();
+                            viewTuple.getViewModel().initWithModel(addedDirectory);
+                            centerPane.getChildren().add(viewTuple.getView());
                     });
             }
         });
@@ -46,6 +52,7 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
     public void addFolder(ActionEvent actionEvent) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(mainPane.getScene().getWindow());
-        viewModel.addDirectory(selectedDirectory);
+        if (selectedDirectory != null)
+            viewModel.addDirectory(selectedDirectory);
     }
 }
