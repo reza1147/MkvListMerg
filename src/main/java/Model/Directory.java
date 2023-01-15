@@ -7,7 +7,9 @@ import java.util.List;
 
 public class Directory {
     private File directory;
-    private List<SourceFile> files;
+    private List<SourceFile> videos;
+    private List<SourceFile> audios;
+    private List<SourceFile> subtitles;
 
     public Directory(File directory) throws IllegalArgumentException {
         this.directory = directory;
@@ -15,7 +17,9 @@ public class Directory {
             throw new IllegalArgumentException("Directory is not exist!!");
         if (this.directory.isFile())
             throw new IllegalArgumentException("Path is not for Directory!!");
-        files = new ArrayList<>();
+        videos = new ArrayList<>();
+        audios = new ArrayList<>();
+        subtitles = new ArrayList<>();
     }
 
     public Directory(String pathname) throws IllegalArgumentException {
@@ -27,7 +31,17 @@ public class Directory {
     }
 
     public void addSourceFile(SourceFile file) {
-        files.add(file);
+        switch (file.getType()) {
+            case VIDEO:
+                videos.add(file);
+                break;
+            case AUDIO:
+                audios.add(file);
+                break;
+            case SUBTITLES:
+                subtitles.add(file);
+                break;
+        }
     }
 
     @Override
@@ -39,7 +53,16 @@ public class Directory {
         return directory.getName();
     }
 
-    public List<SourceFile> getFiles() {
-        return files;
+    public List<SourceFile> getVideos() {
+        return videos;
     }
+
+    public List<SourceFile> getAudios() {
+        return audios;
+    }
+
+    public List<SourceFile> getSubtitles() {
+        return subtitles;
+    }
+
 }

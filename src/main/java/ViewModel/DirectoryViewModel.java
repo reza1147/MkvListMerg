@@ -14,17 +14,23 @@ public class DirectoryViewModel implements ViewModel {
 
     Directory directoryModel;
     StringProperty directoryName;
-    ListProperty<SourceFile> sourceFileViewModels;
+    ListProperty<SourceFile> videosList;
+    ListProperty<SourceFile> audiosList;
+    ListProperty<SourceFile> subtitlesList;
 
     public DirectoryViewModel() {
         directoryName = new SimpleStringProperty("");
-        sourceFileViewModels = new SimpleListProperty<SourceFile>(FXCollections.observableArrayList());
+        videosList = new SimpleListProperty<SourceFile>(FXCollections.observableArrayList());
+        audiosList = new SimpleListProperty<SourceFile>(FXCollections.observableArrayList());
+        subtitlesList = new SimpleListProperty<SourceFile>(FXCollections.observableArrayList());
     }
 
     public void initWithModel(Directory directoryModel) {
         this.directoryModel = directoryModel;
         directoryName.setValue(directoryModel.getDirectoryName());
-        sourceFileViewModels.addAll(directoryModel.getFiles());
+        videosList.addAll(directoryModel.getVideos());
+        audiosList.addAll(directoryModel.getAudios());
+        subtitlesList.addAll(directoryModel.getSubtitles());
     }
 
     public String getDirectoryName() {
@@ -35,11 +41,27 @@ public class DirectoryViewModel implements ViewModel {
         return directoryName;
     }
 
-    public ObservableList<SourceFile> getSourceFileViewModels() {
-        return sourceFileViewModels.get();
+    public ObservableList<SourceFile> getVideosList() {
+        return videosList.get();
     }
 
-    public ListProperty<SourceFile> sourceFileViewModelsProperty() {
-        return sourceFileViewModels;
+    public ListProperty<SourceFile> videosListProperty() {
+        return videosList;
+    }
+
+    public ObservableList<SourceFile> getAudiosList() {
+        return audiosList.get();
+    }
+
+    public ListProperty<SourceFile> audiosListProperty() {
+        return audiosList;
+    }
+
+    public ObservableList<SourceFile> getSubtitlesList() {
+        return subtitlesList.get();
+    }
+
+    public ListProperty<SourceFile> subtitlesListProperty() {
+        return subtitlesList;
     }
 }

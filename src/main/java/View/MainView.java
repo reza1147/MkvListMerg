@@ -1,6 +1,7 @@
 package View;
 
 import Model.Directory;
+import Service.MakeDirectoryViewTask;
 import ViewModel.DirectoryViewModel;
 import ViewModel.MainViewModel;
 import de.saxsys.mvvmfx.FluentViewLoader;
@@ -20,6 +21,7 @@ import javafx.stage.DirectoryChooser;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
 
 public class MainView implements FxmlView<MainViewModel>, Initializable {
     @FXML
@@ -47,9 +49,17 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
             public void onChanged(Change<? extends Directory> c) {
                 if (c.next())
                     c.getAddedSubList().forEach(addedDirectory -> {
-                        ViewTuple<DirectoryView, DirectoryViewModel> viewTuple = FluentViewLoader.fxmlView(DirectoryView.class).load();
-                        viewTuple.getViewModel().initWithModel(addedDirectory);
-                        centerPane.getChildren().add(viewTuple.getView());
+                        MakeDirectoryViewTask makeDirectoryViewTask = new MakeDirectoryViewTask(addedDirectory);
+                        makeDirectoryViewTask.setOnSucceeded(event -> {
+                            try {
+                                centerPane.getChildren().add(makeDirectoryViewTask.get().getView());
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        new Thread(makeDirectoryViewTask).start();
                     });
             }
         });
