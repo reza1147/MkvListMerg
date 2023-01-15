@@ -3,7 +3,6 @@ package Model;
 import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Directory {
@@ -17,12 +16,6 @@ public class Directory {
         if (this.directory.isFile())
             throw new IllegalArgumentException("Path is not for Directory!!");
         files = new ArrayList<>();
-        Arrays.stream(directory.listFiles()).forEach(f -> {
-            try {
-                files.add(new SourceFile(f));
-            } catch (IllegalArgumentException e) {
-            }
-        });
     }
 
     public Directory(String pathname) throws IllegalArgumentException {
@@ -31,6 +24,10 @@ public class Directory {
 
     public Directory(URI uri) throws IllegalArgumentException {
         this(uri.getPath());
+    }
+
+    public void addSourceFile(SourceFile file) {
+        files.add(file);
     }
 
     @Override

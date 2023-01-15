@@ -1,6 +1,7 @@
 package View;
 
 import Model.SourceFile;
+import Service.MakeSourceFileViewTask;
 import ViewModel.DirectoryViewModel;
 import ViewModel.SourceFileViewModel;
 import de.saxsys.mvvmfx.FluentViewLoader;
@@ -21,7 +22,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
 
 public class DirectoryView implements FxmlView<DirectoryViewModel>, Initializable {
     @FXML
@@ -69,25 +72,33 @@ public class DirectoryView implements FxmlView<DirectoryViewModel>, Initializabl
         viewModel.sourceFileViewModelsProperty().addListener(new ListChangeListener<SourceFile>() {
             @Override
             public void onChanged(Change<? extends SourceFile> c) {
-                if (c.next())
-                    c.getAddedSubList().forEach(sourceFile -> {
-                        ViewTuple<SourceFileView, SourceFileViewModel> viewTuple = FluentViewLoader.fxmlView(SourceFileView.class).load();
-                        viewTuple.getViewModel().initWithModel(sourceFile);
-                        switch (sourceFile.getType()) {
-                            case VIDEO:
-                                videoTiles.getChildren().add(viewTuple.getView());
-                                hasVideo.setValue(true);
-                                break;
-                            case AUDIO:
-                                audioTiles.getChildren().add(viewTuple.getView());
-                                hasAudio.setValue(true);
-                                break;
-                            case SUBTITLES:
-                                subtitleTiles.getChildren().add(viewTuple.getView());
-                                hasSubTitle.setValue(true);
-                                break;
+                if (c.next()) {
+                    MakeSourceFileViewTask makeSourceFileViewTask=new MakeSourceFileViewTask((List<SourceFile>) c.getAddedSubList());
+                    makeSourceFileViewTask.setOnSucceeded(event -> {
+                        try {
+                            makeSourceFileViewTask.get().forEach(tuple ->{
+                                switch (tuple.getViewModel().getSourceFileType()) {
+                                    case VIDEO:
+                                        videoTiles.getChildren().add(tuple.getView());
+                                        hasVideo.setValue(true);
+                                        break;
+                                    case AUDIO:
+                                        audioTiles.getChildren().add(tuple.getView());
+                                        hasAudio.setValue(true);
+                                        break;
+                                    case SUBTITLES:
+                                        subtitleTiles.getChildren().add(tuple.getView());
+                                        hasSubTitle.setValue(true);
+                                        break;
+                                }
+                            });
+                        } catch (InterruptedException | ExecutionException e) {
+                            e.printStackTrace();
                         }
+
                     });
+                    new Thread(makeSourceFileViewTask).start();
+                }
             }
         });
     }
