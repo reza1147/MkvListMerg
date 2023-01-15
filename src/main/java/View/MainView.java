@@ -47,8 +47,14 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                 if (c.next())
                     c.getAddedSubList().forEach(addedDirectory -> {
                         MakeDirectoryViewTask makeDirectoryViewTask = new MakeDirectoryViewTask(addedDirectory);
+                        viewModel.progressProperty().bind(makeDirectoryViewTask.progressProperty());
+                        viewModel.messageProperty().bind(makeDirectoryViewTask.messageProperty());
+                        viewModel.percentProperty().bind(makeDirectoryViewTask.titleProperty());
                         makeDirectoryViewTask.setOnSucceeded(event -> {
                             try {
+                                viewModel.progressProperty().unbind();
+                                viewModel.messageProperty().unbind();
+                                viewModel.percentProperty().unbind();
                                 centerPane.getChildren().add(makeDirectoryViewTask.get().getView());
                             } catch (InterruptedException e) {
                                 e.printStackTrace();

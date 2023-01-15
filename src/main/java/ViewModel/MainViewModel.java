@@ -63,10 +63,10 @@ public class MainViewModel implements ViewModel {
         percent.bind(readDirectoryTask.titleProperty());
         readDirectoryTask.setOnSucceeded(e -> {
             try {
-                directoriesList.add(readDirectoryTask.get());
                 percent.unbind();
                 progress.unbind();
                 message.unbind();
+                directoriesList.add(readDirectoryTask.get());
             } catch (InterruptedException interruptedException) {
                 interruptedException.printStackTrace();
             } catch (ExecutionException executionException) {

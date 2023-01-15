@@ -16,8 +16,14 @@ public class MakeDirectoryViewTask extends Task<ViewTuple<DirectoryView, Directo
 
     @Override
     protected ViewTuple<DirectoryView, DirectoryViewModel> call() throws Exception {
+        updateMessage("Making buttons");
+        updateProgress(-1,1);
+        updateTitle("");
         ViewTuple<DirectoryView, DirectoryViewModel> viewTuple = FluentViewLoader.fxmlView(DirectoryView.class).load();
         viewTuple.getViewModel().initWithModel(model);
+        updateMessage("Done!!");
+        updateProgress(1,1);
+        updateTitle("");
         return viewTuple;
     }
 }

@@ -5,3 +5,11 @@
 .ribbon > .outer-container > .tab-pane > .tab-header-area > .headers-region > .tab {
     -fx-background-color: -fx-outer-border, white, white;
 }
+
+.progress-bar:indeterminate > .track {
+    -fx-background-color: white;
+}
+
+.progress-bar:indeterminate {
+    bar_color: transparent;
+}

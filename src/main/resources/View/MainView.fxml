@@ -57,7 +57,7 @@
     </center>
     <bottom>
         <HBox style="-fx-padding: 5 5 5 5;" spacing="5" alignment="CENTER_LEFT">
-            <ProgressBar fx:id="progress" prefWidth="400"/>
+            <ProgressBar fx:id="progress" prefWidth="400" maxHeight="1"/>
             <Label fx:id="percent" style="-fx-font-size: 18;" prefWidth="50"/>
             <Label fx:id="message" style="-fx-font-size: 18;" HBox.hgrow="ALWAYS"/>
         </HBox>
