@@ -7,8 +7,6 @@ import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewTuple;
 import javafx.concurrent.Task;
 
-import java.util.List;
-
 public class MakeDirectoryViewTask extends Task<ViewTuple<DirectoryView, DirectoryViewModel>> {
     Directory model;
 

@@ -2,12 +2,9 @@ package View;
 
 import Model.Directory;
 import Service.MakeDirectoryViewTask;
-import ViewModel.DirectoryViewModel;
 import ViewModel.MainViewModel;
-import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
-import de.saxsys.mvvmfx.ViewTuple;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
